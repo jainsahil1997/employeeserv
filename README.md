@@ -38,27 +38,27 @@ Thank you very much for your time to take this test. Please upload this complete
 ## solution
 - All requirements are fulfilled
 - Idempotency logic is implemented to avoid duplicate resource creation and Primary Key is ID.
-###Post Request:
-####Case PASS:
+##Post Request:
+##Case PASS:
 curl --location --request POST 'http://localhost:8080/v1/bfs/employee' \
 --header 'Content-Type: application/json' \
 --data-raw '{"id":"2","first_name":"Sahil","last_name":"Jain","date_of_birth":"1997-06-19","address_line1":"KingsRoad","address_line2":"9/7","city":"Howrah","state":"WB","country":"India","zip_code":"711101"}'
 
-####Case Fail(Idempotency Check):
+##Case Fail(Idempotency Check):
 curl --location --request POST 'http://localhost:8080/v1/bfs/employee' \
 --header 'Content-Type: application/json' \
 --data-raw '{"id":"2","first_name":"Sahil","last_name":"Jain","date_of_birth":"1997-06-19","address_line1":"KingsRoad","address_line2":"9/7","city":"Howrah","state":"WB","country":"India","zip_code":"711101"}'
-####CASE FAIL(Validation Check):
+##CASE FAIL(Validation Check):
 curl --location --request POST 'http://localhost:8080/v1/bfs/employee' \
 --header 'Content-Type: application/json' \
 --data-raw '{"first_name":"Sahil","last_name":"Jain","date_of_birth":"1997-06-19","address_line1":"KingsRoad","address_line2":"9/7","city":"Howrah","state":"WB","country":"India","zip_code":"711101"}'
 
 ##GET Request
-####CASE PASS:
+##CASE PASS:
 curl --location --request GET 'http://localhost:8080/v1/bfs/employees/1
 
-####CASE Fail:
+##CASE Fail:
 curl --location --request GET 'http://localhost:8080/v1/bfs/employees/21
 
-###Test Cases
+##Test Cases
 ![Alt text](https://github.com/jainsahil1997/employeeserv/blob/main/testcases.JPG "Testcases")
