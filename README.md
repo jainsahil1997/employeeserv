@@ -26,6 +26,7 @@ curl --location --request GET 'http://localhost:8080/v1/bfs/employees/1
 curl --location --request GET 'http://localhost:8080/v1/bfs/employees/21
 
 ### Test Cases
+Test Cases are implemented in employeeservImplementation module
 ![Alt text](https://github.com/jainsahil1997/employeeserv/blob/main/testcases.JPG "Testcases")
 ## Application Overview
 employeeserv is a spring boot rest application which would provide the CRUD operations for `Employee` resource.
