@@ -1,5 +1,32 @@
 # employeeserv
 
+## Solution
+- All requirements are fulfilled
+- Idempotency logic is implemented to avoid duplicate resource creation and Primary Key is ID.
+## Post Request:
+### Case PASS:
+curl --location --request POST 'http://localhost:8080/v1/bfs/employee' \
+--header 'Content-Type: application/json' \
+--data-raw '{"id":"2","first_name":"Sahil","last_name":"Jain","date_of_birth":"1997-06-19","address_line1":"KingsRoad","address_line2":"9/7","city":"Howrah","state":"WB","country":"India","zip_code":"711101"}'
+
+### Case Fail(Idempotency Check):
+curl --location --request POST 'http://localhost:8080/v1/bfs/employee' \
+--header 'Content-Type: application/json' \
+--data-raw '{"id":"2","first_name":"Sahil","last_name":"Jain","date_of_birth":"1997-06-19","address_line1":"KingsRoad","address_line2":"9/7","city":"Howrah","state":"WB","country":"India","zip_code":"711101"}'
+### CASE FAIL(Validation Check):
+curl --location --request POST 'http://localhost:8080/v1/bfs/employee' \
+--header 'Content-Type: application/json' \
+--data-raw '{"first_name":"Sahil","last_name":"Jain","date_of_birth":"1997-06-19","address_line1":"KingsRoad","address_line2":"9/7","city":"Howrah","state":"WB","country":"India","zip_code":"711101"}'
+
+### GET Request
+### CASE PASS:
+curl --location --request GET 'http://localhost:8080/v1/bfs/employees/1
+
+### CASE Fail:
+curl --location --request GET 'http://localhost:8080/v1/bfs/employees/21
+
+### Test Cases
+![Alt text](https://github.com/jainsahil1997/employeeserv/blob/main/testcases.JPG "Testcases")
 ## Application Overview
 employeeserv is a spring boot rest application which would provide the CRUD operations for `Employee` resource.
 
@@ -35,30 +62,3 @@ We would like you to enhance the existing project and see you complete the follo
 
 ## Assignment submission
 Thank you very much for your time to take this test. Please upload this complete solution in Github and send us the link to `bfs-sor-interview@paypal.com`.
-## solution
-- All requirements are fulfilled
-- Idempotency logic is implemented to avoid duplicate resource creation and Primary Key is ID.
-## Post Request:
-### Case PASS:
-curl --location --request POST 'http://localhost:8080/v1/bfs/employee' \
---header 'Content-Type: application/json' \
---data-raw '{"id":"2","first_name":"Sahil","last_name":"Jain","date_of_birth":"1997-06-19","address_line1":"KingsRoad","address_line2":"9/7","city":"Howrah","state":"WB","country":"India","zip_code":"711101"}'
-
-### Case Fail(Idempotency Check):
-curl --location --request POST 'http://localhost:8080/v1/bfs/employee' \
---header 'Content-Type: application/json' \
---data-raw '{"id":"2","first_name":"Sahil","last_name":"Jain","date_of_birth":"1997-06-19","address_line1":"KingsRoad","address_line2":"9/7","city":"Howrah","state":"WB","country":"India","zip_code":"711101"}'
-### CASE FAIL(Validation Check):
-curl --location --request POST 'http://localhost:8080/v1/bfs/employee' \
---header 'Content-Type: application/json' \
---data-raw '{"first_name":"Sahil","last_name":"Jain","date_of_birth":"1997-06-19","address_line1":"KingsRoad","address_line2":"9/7","city":"Howrah","state":"WB","country":"India","zip_code":"711101"}'
-
-### GET Request
-### CASE PASS:
-curl --location --request GET 'http://localhost:8080/v1/bfs/employees/1
-
-### CASE Fail:
-curl --location --request GET 'http://localhost:8080/v1/bfs/employees/21
-
-### Test Cases
-![Alt text](https://github.com/jainsahil1997/employeeserv/blob/main/testcases.JPG "Testcases")
